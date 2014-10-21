@@ -207,7 +207,8 @@ class Menu extends Widget
 
             $menu = $this->renderItem($item);
             if (!empty($item['items'])) {
-                $menu .= strtr($this->submenuTemplate, [
+                $template = ArrayHelper::getValue($item, 'submenuTemplate', $this->submenuTemplate);
+                $menu .= strtr($template, [
                     '{items}' => $this->renderItems($item['items']),
                 ]);
             }
